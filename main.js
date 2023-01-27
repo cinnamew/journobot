@@ -4,6 +4,8 @@ const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const { token } = require('./config.json');
 const { ChannelType, PermissionsBitField } = require('discord.js');
+const discordTranscripts = require('discord-html-transcripts');
+//const channelToSendTranscriptIn;
 
 const client = new Client({
     intents: [ GatewayIntentBits.Guilds ]
@@ -80,6 +82,7 @@ client.on('interactionCreate', async interaction => {
         }
         else await interaction.reply('Sorry, you don\'t seem to be in our staffer list quite yet. Please DM Jolie to have her add you!');
     }else if(commandName === 'button') {
+
         const row = new ActionRowBuilder()
 			.addComponents(
 				new ButtonBuilder()
@@ -89,6 +92,22 @@ client.on('interactionCreate', async interaction => {
 			);
 
 		await interaction.reply({ content: 'Make a group chat here!', components: [row] });
+    }else if(commandName == 'transcript') {
+        const attachment = await discordTranscripts.createTranscript(interaction.channel, {
+            limit: -1, // Max amount of messages to fetch. `-1` recursively fetches.
+            returnType: 'attachment', // Valid options: 'buffer' | 'string' | 'attachment' Default: 'attachment' OR use the enum ExportReturnType
+            filename: 'transcript.html', // Only valid with returnType is 'attachment'. Name of attachment.
+            saveImages: true, // Download all images and include the image data in the HTML (allows viewing the image even after it has been deleted) (! WILL INCREASE FILE SIZE !)
+            footerText: "reached the end of {number} message{s}", // Change text at footer, don't forget to put {number} to show how much messages got exported, and {s} for plural
+            poweredBy: false // Whether to include the "Powered by discord-html-transcripts" footer
+        });
+        
+        console.log('yo creating a transcript');
+        await interaction.reply('creating transcript hopefluly');
+
+        interaction.channel.send({
+            files: [attachment],
+        });
     }
     else await interaction.reply('that\'s still in progress!');
 });
