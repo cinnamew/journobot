@@ -29,13 +29,14 @@ let array = [new Staffer(610302759450837007, 'Jolie Han', 11, ['Postscript Edito
 array.push(new Staffer(709847510688202916, 'Theresa Nguyen', 12, ['Print EIC']));
 array.push(new Staffer(845433078343925761, 'Katelyn Chu', 12, ['Print EIC']));
 array.push(new Staffer(1006046503279792198, 'Saniya Laungani', 12, ['Online EIC']));
+array.push(new Staffer(665743474414452766, 'Taruna Anil', 12, ['Investigations Editor', 'Copy Editor']));
+
 // HAVE NOT JOINED DISCORD YET
 /*array.push(new Staffer(332668159222087681, 'Kevin Jia', 12, ['Podcast Editor']));
 array.push(new Staffer(a, 'Caroline Cheng', 12, ['News Editor']));
 array.push(new Staffer(a, 'Natalie Chen', 12, ['Opinions Editor']));
 array.push(new Staffer(a, 'Soha Roy', 12, ['Features Editor']));
 array.push(new Staffer(a, 'Prithika Sundar', 12, ['Lifestyles Editor']));
-array.push(new Staffer(a, 'Taruna Anil', 12, ['Investigations Editor', 'Copy Editor']));
 array.push(new Staffer(a, 'Lisa Zivanic', 11, ['Sports Editor', 'Copy Editor']));
 array.push(new Staffer(a, 'Evan Lu', 11, ['Postscript Editor', 'Business Editor']));
 array.push(new Staffer(a, 'Rishita Shah', 11, ['Photo Editor', 'Video Editor']));
@@ -92,6 +93,8 @@ client.on('interactionCreate', async interaction => {
 			);
 
 		await interaction.reply({ content: 'Make a group chat here!', components: [row] });
+    }else if(commandName === 'journo') {
+        await interaction.reply('oopsie i\'m lazy so i ahven\'t coded this yet');
     }else if(commandName == 'transcript') {
         const attachment = await discordTranscripts.createTranscript(interaction.channel, {
             limit: -1, // Max amount of messages to fetch. `-1` recursively fetches.
@@ -103,9 +106,9 @@ client.on('interactionCreate', async interaction => {
         });
         
         console.log('yo creating a transcript');
-        await interaction.reply('creating transcript hopefluly');
+        //await interaction.reply('creating transcript hopefluly');
 
-        interaction.channel.send({
+        await interaction.reply({
             files: [attachment],
         });
     }
