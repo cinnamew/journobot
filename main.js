@@ -108,7 +108,7 @@ client.on('interactionCreate', async interaction => {
         console.log('yo creating a transcript');
         //await interaction.reply('creating transcript hopefluly');
 
-        await interaction.reply({
+        interaction.channel.send({
             files: [attachment],
         });
     }
