@@ -5,13 +5,21 @@ const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const { token } = require('./config.json');
 const { ChannelType, PermissionsBitField } = require('discord.js');
 const discordTranscripts = require('discord-html-transcripts');
-//const channelToSendTranscriptIn;
+const { issuenum, importantlink, folderlink, notionlink, channelToSendTranscriptIn } = require('./prospectorinfo.json');
 
 const client = new Client({
     intents: [ GatewayIntentBits.Guilds ]
 });
 
 client.commands = new Collection();
+//const commandsPath = path.join(__dirname, 'commands');
+//const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+
+//for (const file of commandFiles) {
+//    const filePath = path.join(commandsPath, file);
+//    const command = require(filePath);
+//    client.commands.set(command.data.name, command);
+//}
 
 
 //init staffers
@@ -31,8 +39,6 @@ array.push(new Staffer(845433078343925761, 'Katelyn Chu', 12, ['Print EIC']));
 array.push(new Staffer(1006046503279792198, 'Saniya Laungani', 12, ['Online EIC']));
 array.push(new Staffer(665743474414452766, 'Taruna Anil', 12, ['Investigations Editor', 'Copy Editor']));
 array.push(new Staffer(766073569553023026, 'Rishita Shah', 11, ['Photo Editor', 'Video Editor']));
-
-
 // HAVE NOT JOINED DISCORD YET
 /*array.push(new Staffer(332668159222087681, 'Kevin Jia', 12, ['Podcast Editor']));
 array.push(new Staffer(a, 'Caroline Cheng', 12, ['News Editor']));
@@ -72,6 +78,17 @@ client.once('ready', () => {
 client.on('interactionCreate', async interaction => {
     if (!interaction.isChatInputCommand()) return;
 
+    //const command = interaction.client.commands.get(interaction.commandName);
+
+	//if (!command) return;
+
+	//try {
+	//	await command.execute(interaction);
+	//} catch (error) {
+	//	console.error(error);
+	//	await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+	//}
+    
     const {commandName} = interaction;
 
     if (commandName === 'hi') {
@@ -82,9 +99,8 @@ client.on('interactionCreate', async interaction => {
             console.log(personFound);
             await interaction.reply(`Name: ${personFound.name}\nGrade: ${personFound.grade}\nPosition(s): ${personFound.positions}`);
         }
-        else await interaction.reply('Sorry, you don\'t seem to be in our staffer list quite yet. Please DM Jolie to have her add you!');
-    }else if(commandName === 'button') {
-
+        else await interaction.reply('Sorry, you don\'t seem to be in our staffer list quite yet. Please DM/ping Jolie to have her add you!');
+    }else if(commandName === 'editor gc') {
         const row = new ActionRowBuilder()
 			.addComponents(
 				new ButtonBuilder()
@@ -94,26 +110,29 @@ client.on('interactionCreate', async interaction => {
 			);
 
 		await interaction.reply({ content: 'Make a group chat here!', components: [row] });
-    }else if(commandName === 'journo') {
-        await interaction.reply('oopsie i\'m lazy so i ahven\'t coded this yet');
     }else if(commandName == 'transcript') {
         const attachment = await discordTranscripts.createTranscript(interaction.channel, {
             limit: -1, // Max amount of messages to fetch. `-1` recursively fetches.
             returnType: 'attachment', // Valid options: 'buffer' | 'string' | 'attachment' Default: 'attachment' OR use the enum ExportReturnType
-            filename: 'transcript.html', // Only valid with returnType is 'attachment'. Name of attachment.
+            filename: interaction.channel.name + '.html', // Only valid with returnType is 'attachment'. Name of attachment.
             saveImages: true, // Download all images and include the image data in the HTML (allows viewing the image even after it has been deleted) (! WILL INCREASE FILE SIZE !)
             footerText: "reached the end of {number} message{s}", // Change text at footer, don't forget to put {number} to show how much messages got exported, and {s} for plural
             poweredBy: false // Whether to include the "Powered by discord-html-transcripts" footer
         });
+        const channelyum = client.channels.cache.get('1071512112997879821');    //channel to send it in
         
         console.log('yo creating a transcript');
-        //await interaction.reply('creating transcript hopefluly');
+        await interaction.reply('Creating a transcript... (please wait)');
 
-        interaction.channel.send({
+        channelyum.send({
             files: [attachment],
         });
+
+        interaction.channel.send('Transcript saved!');
+    }else if(commandName === 'currentinfo') {
+        await interaction.reply(`Current issue #: ${issuenum}\nImportant links doc: ${importantlink}\nFolder link: ${folderlink}\nNotion link: ${notionlink}`);
     }
-    else await interaction.reply('that\'s still in progress!');
+    else await interaction.reply('weird! you found a bug! pls ping jolie :\')');
 });
 
 client.on('interactionCreate', interaction => {
@@ -121,9 +140,9 @@ client.on('interactionCreate', interaction => {
 
 	//console.log(interaction);
     //let channelName = array.filter(x=>x.uid == interaction.user.id)[0].positions[0];
-    interaction.guild.channels.create({
-        name: 'heyhey',//array.filter(x=>x.uid == interaction.user.id)[0].positions[0],
-        parent: interaction.guild.channel,  //TEST THIS
+    newChannel = interaction.guild.channels.create({
+        name: array.filter(x=>x.uid == interaction.user.id)[0].positions[0],
+        parent: interaction.guild.channel,
         type: ChannelType.GuildText,
 	permissionOverwrites: [
 		{

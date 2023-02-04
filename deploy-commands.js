@@ -1,10 +1,23 @@
+//const fs = require('node:fs');
+//const path = require('node:path');
 const { REST, SlashCommandBuilder, Routes } = require('discord.js');
 const { clientId, guildId, token } = require('./config.json');
 
+//const commands = [];
+//const commandsPath = path.join(__dirname, 'commands');
+//const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+
+//for (const file of commandFiles) {
+//	const filePath = path.join(commandsPath, file);
+//	const command = require(filePath);
+//	commands.push(command.data.toJSON());
+//}
+
+
 const commands = [
 	new SlashCommandBuilder().setName('hi').setDescription('Says hi back!'),
-	new SlashCommandBuilder().setName('journo').setDescription('Replies with info on The Prospector!'),
-    new SlashCommandBuilder().setName('button').setDescription('if you run this command jolie will be very mad at you'),
+	new SlashCommandBuilder().setName('currentinfo').setDescription('Replies with info on the current issue + some important links!'),
+    new SlashCommandBuilder().setName('button').setDescription('DO NOT USE THIS COMMAND (unless eic or bot editor)'),
 	new SlashCommandBuilder().setName('user').setDescription('Replies with user info!'),
 	new SlashCommandBuilder().setName('transcript').setDescription('do not use this command either (unless u r jolie)')
 ]
