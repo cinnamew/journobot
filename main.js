@@ -39,33 +39,34 @@ array.push(new Staffer(845433078343925761, 'Katelyn Chu', 12, ['Print EIC']));
 array.push(new Staffer(1006046503279792198, 'Saniya Laungani', 12, ['Online EIC']));
 array.push(new Staffer(665743474414452766, 'Taruna Anil', 12, ['Investigations Editor', 'Copy Editor']));
 array.push(new Staffer(766073569553023026, 'Rishita Shah', 11, ['Photo Editor', 'Video Editor']));
+array.push(new Staffer(765002153579511839, 'Andrew Qin', 11, ['Podcast Assistant', 'Writer']));
+array.push(new Staffer(332668159222087681, 'Kevin Jia', 12, ['Podcast Editor']));
+array.push(new Staffer(479154661320949770, 'Angie Li', 11, ['Lifestyles Assistant', 'Writer']));
+array.push(new Staffer(479894486495789056, 'Shaona Das', 10, ['Video Assistant', 'Writer']));
+array.push(new Staffer(746577308982444145, 'Evelyn Liao', 10, ['Photo Assistant', 'Writer']));
+array.push(new Staffer(430217685725609994, 'Hailey Ryu', 10, ['Social Media Assistant', 'Writer']));
+array.push(new Staffer(752008823266345002, 'Tanvee Sai', 12, ['Social Media Manager']));
+array.push(new Staffer(727732302230192169, 'Soha Roy', 12, ['Features Editor']));
+array.push(new Staffer(826499607826661446, 'Riya Malik', 11, ['Opinions Assistant', 'Writer']));
+array.push(new Staffer(790726156650283009, 'Prithika Sundar', 12, ['Lifestyles Editor']));
+
 // HAVE NOT JOINED DISCORD YET
-/*array.push(new Staffer(332668159222087681, 'Kevin Jia', 12, ['Podcast Editor']));
-array.push(new Staffer(a, 'Caroline Cheng', 12, ['News Editor']));
+/*array.push(new Staffer(a, 'Caroline Cheng', 12, ['News Editor']));
 array.push(new Staffer(a, 'Natalie Chen', 12, ['Opinions Editor']));
-array.push(new Staffer(a, 'Soha Roy', 12, ['Features Editor']));
-array.push(new Staffer(a, 'Prithika Sundar', 12, ['Lifestyles Editor']));
 array.push(new Staffer(a, 'Lisa Zivanic', 11, ['Sports Editor', 'Copy Editor']));
 array.push(new Staffer(a, 'Evan Lu', 11, ['Postscript Editor', 'Business Editor']));
 array.push(new Staffer(a, 'Rajasi Laddha', 12, ['Copy Editor']));
 array.push(new Staffer(a, 'Meghana Vinjamury', 12, ['Copy Editor']));
-array.push(new Staffer(a, 'Tanvee Sai', 12, ['Social Media Manager']));
 array.push(new Staffer(a, 'Sania Mehta', 11, ['Website Manager']));
 array.push(new Staffer(a, 'Aashin Singhal', 12, ['Opinions Assistant', 'Writer']));
 array.push(new Staffer(a, 'Alexander Liu', 10, ['News Assistant', 'Writer']));
 array.push(new Staffer(a, 'Alisha Sankha', 11, ['Website Assistant', 'Writer']));
-array.push(new Staffer(a, 'Andrew Qin', 11, ['Podcast Assistant', 'Writer']));
-array.push(new Staffer(a, 'Angie Li', 11, ['Lifestyles Assistant', 'Writer']));
 array.push(new Staffer(a, 'Anika Rao', 11, ['Investigations Assistant', 'Writer']));
 array.push(new Staffer(a, 'Anoushka Gokhale', 11, ['Business Assistant', 'Writer']));
 array.push(new Staffer(a, 'Benjamin Liu', 10, ['Sports Assistant', 'Writer']));
 array.push(new Staffer(a, 'Eliana Aschheim', 11, ['Lifestyles Assistant', 'Writer']));
-array.push(new Staffer(a, 'Evelyn Liao', 10, ['Photo Assistant', 'Writer']));
-array.push(new Staffer(a, 'Hailey Ryu', 10, ['Social Media Assistant', 'Writer']));
 array.push(new Staffer(a, 'Joyce Lee', 10, ['Postscript Assistant', 'Writer']));
 array.push(new Staffer(a, 'Katie Kim', 10, ['Postscript Assistant', 'Writer']));
-array.push(new Staffer(a, 'Riya Malik', 11, ['Opinions Assistant', 'Writer']));
-array.push(new Staffer(a, 'Shaona Das', 10, ['Video Assistant', 'Writer']));
 array.push(new Staffer(a, 'Stefaniya Mirashnichenko-Nava', 12, ['Features Assistant', 'Writer']));
 */
 
@@ -96,7 +97,7 @@ client.on('interactionCreate', async interaction => {
     }else if(commandName === 'user') {
         let personFound = array.filter(x=>x.uid == interaction.user.id)[0];
         if(personFound){
-            console.log(personFound);
+            //console.log(personFound);
             await interaction.reply(`Name: ${personFound.name}\nGrade: ${personFound.grade}\nPosition(s): ${personFound.positions}`);
         }
         else await interaction.reply('Sorry, you don\'t seem to be in our staffer list quite yet. Please DM/ping Jolie to have her add you!');
