@@ -49,12 +49,15 @@ array.push(new Staffer(752008823266345002, 'Tanvee Sai', 12, ['Social Media Mana
 array.push(new Staffer(727732302230192169, 'Soha Roy', 12, ['Features Editor']));
 array.push(new Staffer(826499607826661446, 'Riya Malik', 11, ['Opinions Assistant', 'Writer']));
 array.push(new Staffer(790726156650283009, 'Prithika Sundar', 12, ['Lifestyles Editor']));
+array.push(new Staffer(757745072824516669, 'Lisa Zivanic', 11, ['Sports Editor', 'Copy Editor']));
+array.push(new Staffer(917954848626974771, 'Joyce Lee', 10, ['Postscript Assistant', 'Writer']));
+array.push(new Staffer(988613906849226813, 'Katie Kim', 10, ['Postscript Assistant', 'Writer']));
+array.push(new Staffer(852563080092450847, 'Evan Lu', 11, ['Postscript Editor', 'Business Editor']));
+array.push(new Staffer(590543030759456768, 'Benjamin Liu', 10, ['Sports Assistant', 'Writer']));
 
 // HAVE NOT JOINED DISCORD YET
 /*array.push(new Staffer(a, 'Caroline Cheng', 12, ['News Editor']));
 array.push(new Staffer(a, 'Natalie Chen', 12, ['Opinions Editor']));
-array.push(new Staffer(a, 'Lisa Zivanic', 11, ['Sports Editor', 'Copy Editor']));
-array.push(new Staffer(a, 'Evan Lu', 11, ['Postscript Editor', 'Business Editor']));
 array.push(new Staffer(a, 'Rajasi Laddha', 12, ['Copy Editor']));
 array.push(new Staffer(a, 'Meghana Vinjamury', 12, ['Copy Editor']));
 array.push(new Staffer(a, 'Sania Mehta', 11, ['Website Manager']));
@@ -63,10 +66,7 @@ array.push(new Staffer(a, 'Alexander Liu', 10, ['News Assistant', 'Writer']));
 array.push(new Staffer(a, 'Alisha Sankha', 11, ['Website Assistant', 'Writer']));
 array.push(new Staffer(a, 'Anika Rao', 11, ['Investigations Assistant', 'Writer']));
 array.push(new Staffer(a, 'Anoushka Gokhale', 11, ['Business Assistant', 'Writer']));
-array.push(new Staffer(a, 'Benjamin Liu', 10, ['Sports Assistant', 'Writer']));
 array.push(new Staffer(a, 'Eliana Aschheim', 11, ['Lifestyles Assistant', 'Writer']));
-array.push(new Staffer(a, 'Joyce Lee', 10, ['Postscript Assistant', 'Writer']));
-array.push(new Staffer(a, 'Katie Kim', 10, ['Postscript Assistant', 'Writer']));
 array.push(new Staffer(a, 'Stefaniya Mirashnichenko-Nava', 12, ['Features Assistant', 'Writer']));
 */
 
