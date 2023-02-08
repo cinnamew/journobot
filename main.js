@@ -54,18 +54,18 @@ array.push(new Staffer(917954848626974771, 'Joyce Lee', 10, ['Postscript Assista
 array.push(new Staffer(988613906849226813, 'Katie Kim', 10, ['Postscript Assistant', 'Writer']));
 array.push(new Staffer(852563080092450847, 'Evan Lu', 11, ['Postscript Editor', 'Business Editor']));
 array.push(new Staffer(590543030759456768, 'Benjamin Liu', 10, ['Sports Assistant', 'Writer']));
+array.push(new Staffer(766060178147639336, 'Sania Mehta', 11, ['Website Manager']));
+array.push(new Staffer(739950623986024568, 'Anoushka Gokhale', 11, ['Business Assistant', 'Writer']));
+array.push(new Staffer(977057604993953842, 'Anika Rao', 11, ['Investigations Assistant', 'Writer']));
 
 // HAVE NOT JOINED DISCORD YET
 /*array.push(new Staffer(a, 'Caroline Cheng', 12, ['News Editor']));
 array.push(new Staffer(a, 'Natalie Chen', 12, ['Opinions Editor']));
 array.push(new Staffer(a, 'Rajasi Laddha', 12, ['Copy Editor']));
 array.push(new Staffer(a, 'Meghana Vinjamury', 12, ['Copy Editor']));
-array.push(new Staffer(a, 'Sania Mehta', 11, ['Website Manager']));
 array.push(new Staffer(a, 'Aashin Singhal', 12, ['Opinions Assistant', 'Writer']));
 array.push(new Staffer(a, 'Alexander Liu', 10, ['News Assistant', 'Writer']));
 array.push(new Staffer(a, 'Alisha Sankha', 11, ['Website Assistant', 'Writer']));
-array.push(new Staffer(a, 'Anika Rao', 11, ['Investigations Assistant', 'Writer']));
-array.push(new Staffer(a, 'Anoushka Gokhale', 11, ['Business Assistant', 'Writer']));
 array.push(new Staffer(a, 'Eliana Aschheim', 11, ['Lifestyles Assistant', 'Writer']));
 array.push(new Staffer(a, 'Stefaniya Mirashnichenko-Nava', 12, ['Features Assistant', 'Writer']));
 */
