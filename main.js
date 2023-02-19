@@ -11,6 +11,9 @@ const client = new Client({
     intents: [ GatewayIntentBits.Guilds ]
 });
 
+const { ActivityType } = require('discord.js');
+
+
 client.commands = new Collection();
 //const commandsPath = path.join(__dirname, 'commands');
 //const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
@@ -33,36 +36,36 @@ class Staffer {
     }
 }
 
-let array = [new Staffer(610302759450837007, 'Jolie Han', 11, ['Postscript Editor', 'Podcast Editor'])];
+let array = [new Staffer(610302759450837007, 'Jolie Han', 11, ['Print EIC', 'Postscript Editor (OLD)', 'Podcast Editor (OLD)'])];
 array.push(new Staffer(709847510688202916, 'Theresa Nguyen', 12, ['Print EIC']));
 array.push(new Staffer(845433078343925761, 'Katelyn Chu', 12, ['Print EIC']));
 array.push(new Staffer(1006046503279792198, 'Saniya Laungani', 12, ['Online EIC']));
-array.push(new Staffer(665743474414452766, 'Taruna Anil', 12, ['Investigations Editor', 'Copy Editor']));
-array.push(new Staffer(766073569553023026, 'Rishita Shah', 11, ['Photo Editor', 'Video Editor']));
-array.push(new Staffer(765002153579511839, 'Andrew Qin', 11, ['Podcast Assistant', 'Writer']));
-array.push(new Staffer(332668159222087681, 'Kevin Jia', 12, ['Podcast Editor']));
-array.push(new Staffer(479154661320949770, 'Angie Li', 11, ['Lifestyles Assistant', 'Writer']));
-array.push(new Staffer(479894486495789056, 'Shaona Das', 10, ['Video Assistant', 'Writer']));
-array.push(new Staffer(746577308982444145, 'Evelyn Liao', 10, ['Photo Assistant', 'Writer']));
-array.push(new Staffer(430217685725609994, 'Hailey Ryu', 10, ['Social Media Assistant', 'Writer']));
-array.push(new Staffer(752008823266345002, 'Tanvee Sai', 12, ['Social Media Manager']));
-array.push(new Staffer(727732302230192169, 'Soha Roy', 12, ['Features Editor']));
-array.push(new Staffer(826499607826661446, 'Riya Malik', 11, ['Opinions Assistant', 'Writer']));
-array.push(new Staffer(790726156650283009, 'Prithika Sundar', 12, ['Lifestyles Editor']));
-array.push(new Staffer(757745072824516669, 'Lisa Zivanic', 11, ['Sports Editor', 'Copy Editor']));
-array.push(new Staffer(917954848626974771, 'Joyce Lee', 10, ['Postscript Assistant', 'Writer']));
-array.push(new Staffer(988613906849226813, 'Katie Kim', 10, ['Postscript Assistant', 'Writer']));
-array.push(new Staffer(852563080092450847, 'Evan Lu', 11, ['Postscript Editor', 'Business Editor']));
-array.push(new Staffer(590543030759456768, 'Benjamin Liu', 10, ['Sports Assistant', 'Writer']));
-array.push(new Staffer(766060178147639336, 'Sania Mehta', 11, ['Website Manager']));
-array.push(new Staffer(739950623986024568, 'Anoushka Gokhale', 11, ['Business Assistant', 'Writer']));
-array.push(new Staffer(977057604993953842, 'Anika Rao', 11, ['Investigations Assistant', 'Writer']));
-array.push(new Staffer(1007369208574791740, 'Stefaniya Mirashnichenko-Nava', 12, ['Features Assistant', 'Writer']));
-array.push(new Staffer(766060113974001694, 'Caroline Cheng', 12, ['News Editor']));
-array.push(new Staffer(768607817241985064, 'Eliana Aschheim', 11, ['Lifestyles Assistant', 'Writer']));
-array.push(new Staffer(634121313820082188, 'Alisha Sankha', 11, ['Website Assistant', 'Writer']));
-array.push(new Staffer(452313135148302347, 'Natalie Chen', 12, ['Opinions Editor']));
-array.push(new Staffer(752728177880858666, 'Alexander Liu', 10, ['News Assistant', 'Writer']));
+array.push(new Staffer(665743474414452766, 'Taruna Anil', 12, ['Print EIC', 'Investigations Editor (OLD)', 'Copy Editor (OLD)']));
+array.push(new Staffer(766073569553023026, 'Rishita Shah', 11, ['Online EIC', 'Photo Editor (OLD)', 'Video Editor (OLD)']));
+array.push(new Staffer(765002153579511839, 'Andrew Qin', 11, ['News Editor', 'Podcast Assistant (OLD)', 'Writer (OLD)']));
+array.push(new Staffer(332668159222087681, 'Kevin Jia', 12, ['Writer', 'Podcast Editor (OLD)']));
+array.push(new Staffer(479154661320949770, 'Angie Li', 11, ['Lifestyles Editor', 'Lifestyles Assistant (OLD)', 'Writer (OLD)']));
+array.push(new Staffer(479894486495789056, 'Shaona Das', 10, ['Social Media Editor', 'Video Assistant (OLD)', 'Writer (OLD)']));
+array.push(new Staffer(746577308982444145, 'Evelyn Liao', 10, ['Arts and Leisure Editor', 'Politics & Activism Editor', 'Photo Editor', 'Photo Assistant (OLD)', 'Writer (OLD)']));
+array.push(new Staffer(430217685725609994, 'Hailey Ryu', 10, ['Sports Editor', 'Social Media Assistant (OLD)', 'Writer (OLD)']));
+array.push(new Staffer(752008823266345002, 'Tanvee Sai', 12, ['Writer', 'Social Media Manager (OLD)']));
+array.push(new Staffer(727732302230192169, 'Soha Roy', 12, ['Writer', 'Features Editor (OLD)']));
+array.push(new Staffer(826499607826661446, 'Riya Malik', 11, ['Lifestyles Editor', 'Opinions Assistant (OLD)', 'Writer (OLD)']));
+array.push(new Staffer(790726156650283009, 'Prithika Sundar', 12, ['Writer', 'Lifestyles Editor (OLD)']));
+array.push(new Staffer(757745072824516669, 'Lisa Zivanic', 11, ['Podcast Editor', 'Sports Editor (OLD)', 'Copy Editor (OLD)']));
+array.push(new Staffer(917954848626974771, 'Joyce Lee', 10, ['Copy Editor', 'Postscript Assistant (OLD)', 'Writer (OLD)']));
+array.push(new Staffer(988613906849226813, 'Katie Kim', 10, ['Multimedia Editor', 'Video Editor', 'Postscript Assistant (OLD)', 'Writer (OLD)']));
+array.push(new Staffer(852563080092450847, 'Evan Lu', 11, ['Online Opinions Editor', 'Tech Editor', 'Website Editor', 'Postscript Editor (OLD)', 'Business Editor (OLD)']));
+array.push(new Staffer(590543030759456768, 'Benjamin Liu', 10, ['Investigations Editor', 'Sports Assistant (OLD)', 'Writer (OLD)']));
+array.push(new Staffer(766060178147639336, 'Sania Mehta', 11, ['Online News Editor', 'Spotlight Editor', 'Business Editor', 'Website Manager (OLD)']));
+array.push(new Staffer(739950623986024568, 'Anoushka Gokhale', 11, ['Copy Editor', 'Business Assistant (OLD)', 'Writer (OLD)']));
+array.push(new Staffer(977057604993953842, 'Anika Rao', 11, ['Features Editor', 'Investigations Assistant (OLD)', 'Writer (OLD)']));
+array.push(new Staffer(1007369208574791740, 'Stefaniya Mirashnichenko-Nava', 12, ['Writer', 'Features Assistant (OLD)', 'Writer (OLD)']));
+array.push(new Staffer(766060113974001694, 'Caroline Cheng', 12, ['Writer', 'News Editor (OLD)']));
+array.push(new Staffer(768607817241985064, 'Eliana Aschheim', 11, ['Postscript Editor', 'Lifestyles Assistant (OLD)', 'Writer (OLD)']));
+array.push(new Staffer(634121313820082188, 'Alisha Sankha', 11, ['Copy Editor', 'Website Assistant (OLD)', 'Writer (OLD)']));
+array.push(new Staffer(452313135148302347, 'Natalie Chen', 12, ['Writer', 'Opinions Editor (OLD)']));
+array.push(new Staffer(752728177880858666, 'Alexander Liu', 10, ['Opinions Editor', 'News Assistant (OLD)', 'Writer (OLD)']));
 
 // HAVE NOT JOINED DISCORD YET
 /*array.push(new Staffer(a, 'Rajasi Laddha', 12, ['Copy Editor']));
@@ -74,6 +77,7 @@ array.push(new Staffer(a, 'Aashin Singhal', 12, ['Opinions Assistant', 'Writer']
 
 client.once('ready', () => {
     console.log('i\'m on!');
+    client.user.setActivity('over the prospector!', { type: ActivityType.Watching });
 });
 
 client.on('interactionCreate', async interaction => {
@@ -101,7 +105,10 @@ client.on('interactionCreate', async interaction => {
             await interaction.reply(`Name: ${personFound.name}\nGrade: ${personFound.grade}\nPosition(s): ${personFound.positions}`);
         }
         else await interaction.reply('Sorry, you don\'t seem to be in our staffer list quite yet. Please DM/ping Jolie to have her add you!');
-    }else if(commandName === 'editor gc') {
+    }else if(commandName === 'button') {
+        if(interaction.user.id != '610302759450837007') {
+            interaction.channel.send('come on man');
+        }
         const row = new ActionRowBuilder()
 			.addComponents(
 				new ButtonBuilder()
@@ -143,7 +150,7 @@ client.on('interactionCreate', interaction => {
     //let channelName = array.filter(x=>x.uid == interaction.user.id)[0].positions[0];
     newChannel = interaction.guild.channels.create({
         name: array.filter(x=>x.uid == interaction.user.id)[0].positions[0],
-        parent: interaction.guild.channel,
+        parent: '1016182946274746408', //interaction.guild.channel,
         type: ChannelType.GuildText,
 	permissionOverwrites: [
 		{
@@ -156,6 +163,8 @@ client.on('interactionCreate', interaction => {
 		//},
 	],
     })
+    //newChannel.setParent('1016182946274746408');
+    //newChannel.cache.get(newChannel.id).send('hey hey <@' + interaction.user.id + '>, here\'s your channel!');
     interaction.reply({content: 'Your channel has been created!', ephemeral: true});
 });
 
