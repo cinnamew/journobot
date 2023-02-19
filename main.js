@@ -37,6 +37,7 @@ class Staffer {
 }
 
 let array = [new Staffer(610302759450837007, 'Jolie Han', 11, ['Print EIC', 'Postscript Editor (OLD)', 'Podcast Editor (OLD)'])];
+array.push(new Staffer(753653175013212261, 'Jolie Han', 11, ['Podcast Editor']));
 array.push(new Staffer(709847510688202916, 'Theresa Nguyen', 12, ['Print EIC']));
 array.push(new Staffer(845433078343925761, 'Katelyn Chu', 12, ['Print EIC']));
 array.push(new Staffer(1006046503279792198, 'Saniya Laungani', 12, ['Online EIC']));
@@ -155,12 +156,12 @@ client.on('interactionCreate', interaction => {
 	permissionOverwrites: [
 		{
 			id: interaction.user.id,
-			allow: [PermissionsBitField.Flags.ManageChannels, PermissionsBitField.Flags.ManageRoles],
+			allow: [PermissionsBitField.Flags.ManageChannels, PermissionsBitField.Flags.ManageRoles, PermissionsBitField.Flags.ViewChannel],
 		},
-		//{
-		//	id: interaction.user.id,
-		//	allow: [PermissionsBitField.Flags.ViewChannel],
-		//},
+		{
+			id: interaction.guild.roles.everyone,
+			deny: [PermissionsBitField.Flags.ViewChannel],
+		},
 	],
     })
     //newChannel.setParent('1016182946274746408');
