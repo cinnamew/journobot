@@ -67,11 +67,11 @@ array.push(new Staffer(768607817241985064, 'Eliana Aschheim', 11, ['Postscript E
 array.push(new Staffer(634121313820082188, 'Alisha Sankha', 11, ['Copy Editor', 'Website Assistant (OLD)', 'Writer (OLD)']));
 array.push(new Staffer(452313135148302347, 'Natalie Chen', 12, ['Writer', 'Opinions Editor (OLD)']));
 array.push(new Staffer(752728177880858666, 'Alexander Liu', 10, ['Opinions Editor', 'News Assistant (OLD)', 'Writer (OLD)']));
+array.push(new Staffer(424437176995151872, 'Aashin Singhal', 12, ['Opinions Assistant (OLD)', 'Writer']));
 
 // HAVE NOT JOINED DISCORD YET
 /*array.push(new Staffer(a, 'Rajasi Laddha', 12, ['Copy Editor']));
 array.push(new Staffer(a, 'Meghana Vinjamury', 12, ['Copy Editor']));
-array.push(new Staffer(a, 'Aashin Singhal', 12, ['Opinions Assistant', 'Writer']));
 */
 
 
