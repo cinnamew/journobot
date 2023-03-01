@@ -46,7 +46,7 @@ array.push(new Staffer(766073569553023026, 'Rishita Shah', 11, ['Online EIC', 'P
 array.push(new Staffer(765002153579511839, 'Andrew Qin', 11, ['News Editor', 'Podcast Assistant (OLD)', 'Writer (OLD)']));
 array.push(new Staffer(332668159222087681, 'Kevin Jia', 12, ['Writer', 'Podcast Editor (OLD)']));
 array.push(new Staffer(479154661320949770, 'Angie Li', 11, ['Lifestyles Editor', 'Lifestyles Assistant (OLD)', 'Writer (OLD)']));
-array.push(new Staffer(479894486495789056, 'Shaona Das', 10, ['Social Media Editor', 'Video Assistant (OLD)', 'Writer (OLD)']));
+array.push(new Staffer(479894486495789056, 'Shaona Das', 10, ['Social Media Editor', 'Copy Editor', 'Video Assistant (OLD)', 'Writer (OLD)']));
 array.push(new Staffer(746577308982444145, 'Evelyn Liao', 10, ['Arts and Leisure Editor', 'Politics & Activism Editor', 'Photo Editor', 'Photo Assistant (OLD)', 'Writer (OLD)']));
 array.push(new Staffer(430217685725609994, 'Hailey Ryu', 10, ['Sports Editor', 'Social Media Assistant (OLD)', 'Writer (OLD)']));
 array.push(new Staffer(752008823266345002, 'Tanvee Sai', 12, ['Writer', 'Social Media Manager (OLD)']));
