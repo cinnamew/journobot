@@ -36,7 +36,7 @@ class Staffer {
     }
 }
 
-let array = [new Staffer(610302759450837007, 'Jolie Han', 11, ['Print EIC', 'Postscript Editor (OLD)', 'Podcast Editor (OLD)'])];
+let array = [new Staffer(610302759450837007, 'Jolie Han', 11, ['Copy Editor', 'Postscript Editor (OLD)', 'Podcast Editor (OLD)'])];
 array.push(new Staffer(753653175013212261, 'Jolie Han', 11, ['Podcast Editor']));
 array.push(new Staffer(709847510688202916, 'Theresa Nguyen', 12, ['Print EIC']));
 array.push(new Staffer(845433078343925761, 'Katelyn Chu', 12, ['Print EIC']));
