@@ -37,37 +37,37 @@ class Staffer {
 }
 
 let array = [new Staffer(610302759450837007, 'Jolie Han', 11, ['Copy Editor', 'Postscript Editor (OLD)', 'Podcast Editor (OLD)'])];
-array.push(new Staffer(753653175013212261, 'Jolie Han', 11, ['Podcast Editor']));
+array.push(new Staffer(753653175013212261, 'Jolie Han', 11, ['Copy Editor']));
 array.push(new Staffer(709847510688202916, 'Theresa Nguyen', 12, ['Print EIC']));
 array.push(new Staffer(845433078343925761, 'Katelyn Chu', 12, ['Print EIC']));
 array.push(new Staffer(1006046503279792198, 'Saniya Laungani', 12, ['Online EIC']));
-array.push(new Staffer(665743474414452766, 'Taruna Anil', 12, ['Print EIC', 'Investigations Editor (OLD)', 'Copy Editor (OLD)']));
-array.push(new Staffer(766073569553023026, 'Rishita Shah', 11, ['Online EIC', 'Photo Editor (OLD)', 'Video Editor (OLD)']));
-array.push(new Staffer(765002153579511839, 'Andrew Qin', 11, ['News Editor', 'Podcast Assistant (OLD)', 'Writer (OLD)']));
+array.push(new Staffer(665743474414452766, 'Taruna Anil', 12, ['Writer', 'Investigations Editor (OLD)', 'Copy Editor (OLD)']));
+array.push(new Staffer(766073569553023026, 'Rishita Shah', 11, ['Photo Editor', 'Sports Editor','Photo Editor (OLD)', 'Video Editor (OLD)']));
+array.push(new Staffer(765002153579511839, 'Andrew Qin', 11, ['Website Editor', 'Spotlight Editor', 'Online Sports Editor' , 'Tech Editor' , 'Podcast Assistant (OLD)', 'Writer (OLD)']));
 array.push(new Staffer(332668159222087681, 'Kevin Jia', 12, ['Writer', 'Podcast Editor (OLD)']));
-array.push(new Staffer(479154661320949770, 'Angie Li', 11, ['Lifestyles Editor', 'Lifestyles Assistant (OLD)', 'Writer (OLD)']));
-array.push(new Staffer(479894486495789056, 'Shaona Das', 10, ['Social Media Editor', 'Copy Editor', 'Video Assistant (OLD)', 'Writer (OLD)']));
-array.push(new Staffer(746577308982444145, 'Evelyn Liao', 10, ['Arts and Leisure Editor', 'Politics & Activism Editor', 'Photo Editor', 'Photo Assistant (OLD)', 'Writer (OLD)']));
-array.push(new Staffer(430217685725609994, 'Hailey Ryu', 10, ['Sports Editor', 'Social Media Assistant (OLD)', 'Writer (OLD)']));
+array.push(new Staffer(479154661320949770, 'Angie Li', 11, ['Postscript Editor', 'Lifestyles Assistant (OLD)', 'Writer (OLD)']));
+array.push(new Staffer(479894486495789056, 'Shaona Das', 10, ['Lifestyles Editor', 'Photo Editor', 'Video Assistant (OLD)', 'Writer (OLD)']));
+array.push(new Staffer(746577308982444145, 'Evelyn Liao', 10, ['Features Editor', 'Photo Assistant (OLD)', 'Writer (OLD)']));
+array.push(new Staffer(430217685725609994, 'Hailey Ryu', 10, ['Social Media Editor', 'Arts and Leisure Editor' ,'Social Media Assistant (OLD)', 'Writer (OLD)']));
 array.push(new Staffer(752008823266345002, 'Tanvee Sai', 12, ['Writer', 'Social Media Manager (OLD)']));
 array.push(new Staffer(727732302230192169, 'Soha Roy', 12, ['Writer', 'Features Editor (OLD)']));
-array.push(new Staffer(826499607826661446, 'Riya Malik', 11, ['Lifestyles Editor', 'Opinions Assistant (OLD)', 'Writer (OLD)']));
+array.push(new Staffer(826499607826661446, 'Riya Malik', 11, ['Copy Editor', 'Opinions Assistant (OLD)', 'Writer (OLD)']));
 array.push(new Staffer(790726156650283009, 'Prithika Sundar', 12, ['Writer', 'Lifestyles Editor (OLD)']));
-array.push(new Staffer(757745072824516669, 'Lisa Zivanic', 11, ['Podcast Editor', 'Sports Editor (OLD)', 'Copy Editor (OLD)']));
-array.push(new Staffer(917954848626974771, 'Joyce Lee', 10, ['Copy Editor', 'Postscript Assistant (OLD)', 'Writer (OLD)']));
-array.push(new Staffer(988613906849226813, 'Katie Kim', 10, ['Multimedia Editor', 'Video Editor', 'Postscript Assistant (OLD)', 'Writer (OLD)']));
-array.push(new Staffer(852563080092450847, 'Evan Lu', 11, ['Online Opinions Editor', 'Tech Editor', 'Website Editor', 'Postscript Editor (OLD)', 'Business Editor (OLD)']));
-array.push(new Staffer(590543030759456768, 'Benjamin Liu', 10, ['Investigations Editor', 'Sports Assistant (OLD)', 'Writer (OLD)']));
-array.push(new Staffer(766060178147639336, 'Sania Mehta', 11, ['Online News Editor', 'Spotlight Editor', 'Business Editor', 'Website Manager (OLD)']));
-array.push(new Staffer(739950623986024568, 'Anoushka Gokhale', 11, ['Copy Editor', 'Business Assistant (OLD)', 'Writer (OLD)']));
-array.push(new Staffer(977057604993953842, 'Anika Rao', 11, ['Features Editor', 'Investigations Assistant (OLD)', 'Writer (OLD)']));
+array.push(new Staffer(757745072824516669, 'Lisa Zivanic', 11, ['Print EIC', 'Sports Editor (OLD)', 'Copy Editor (OLD)']));
+array.push(new Staffer(917954848626974771, 'Joyce Lee', 10, ['Video Editor', 'Multimedia Editor' , 'Postscript Assistant (OLD)', 'Writer (OLD)']));
+array.push(new Staffer(988613906849226813, 'Katie Kim', 10, ['Podcast Editor', 'Postscript Assistant (OLD)', 'Writer (OLD)']));
+array.push(new Staffer(852563080092450847, 'Evan Lu', 11, ['Print EIC', 'Postscript Editor (OLD)', 'Business Editor (OLD)']));
+array.push(new Staffer(590543030759456768, 'Benjamin Liu', 10, ['News Editor', 'Sports Assistant (OLD)', 'Writer (OLD)']));
+array.push(new Staffer(766060178147639336, 'Sania Mehta', 11, ['Online EIC', 'Website Manager (OLD)']));
+array.push(new Staffer(739950623986024568, 'Anoushka Gokhale', 11, ['Business Editor', 'Online News Editor' , 'Online Opinions Editor','Politics and Activism Editor' ,'Business Assistant (OLD)', 'Writer (OLD)']));
+array.push(new Staffer(977057604993953842, 'Anika Rao', 11, ['Copy Editor', 'Investigations Assistant (OLD)', 'Writer (OLD)']));
 array.push(new Staffer(1007369208574791740, 'Stefaniya Mirashnichenko-Nava', 12, ['Writer', 'Features Assistant (OLD)', 'Writer (OLD)']));
 array.push(new Staffer(766060113974001694, 'Caroline Cheng', 12, ['Writer', 'News Editor (OLD)']));
-array.push(new Staffer(768607817241985064, 'Eliana Aschheim', 11, ['Postscript Editor', 'Lifestyles Assistant (OLD)', 'Writer (OLD)']));
-array.push(new Staffer(634121313820082188, 'Alisha Sankha', 11, ['Copy Editor', 'Website Assistant (OLD)', 'Writer (OLD)']));
+array.push(new Staffer(768607817241985064, 'Eliana Aschheim', 11, ['Sports Editor', 'Lifestyles Assistant (OLD)', 'Writer (OLD)']));
+array.push(new Staffer(634121313820082188, 'Alisha Sankha', 11, ['Opinions Editor', 'Website Assistant (OLD)', 'Writer (OLD)']));
 array.push(new Staffer(452313135148302347, 'Natalie Chen', 12, ['Writer', 'Opinions Editor (OLD)']));
-array.push(new Staffer(752728177880858666, 'Alexander Liu', 10, ['Opinions Editor', 'News Assistant (OLD)', 'Writer (OLD)']));
-array.push(new Staffer(424437176995151872, 'Aashin Singhal', 12, ['Opinions Assistant (OLD)', 'Writer']));
+array.push(new Staffer(752728177880858666, 'Alexander Liu', 10, ['Investigations Editor', 'News Assistant (OLD)', 'Writer (OLD)']));
+array.push(new Staffer(424437176995151872, 'Aashin Singhal', 12, ['Writer','Opinions Assistant (OLD)']));
 
 // HAVE NOT JOINED DISCORD YET
 /*array.push(new Staffer(a, 'Rajasi Laddha', 12, ['Copy Editor']));
