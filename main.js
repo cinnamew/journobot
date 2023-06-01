@@ -55,7 +55,7 @@ array.push(new Staffer(739950623986024568, 'Anoushka Gokhale', 12, ['Copy Editor
 array.push(new Staffer(977057604993953842, 'Anika Rao', 12, ['Business Manager']));
 array.push(new Staffer(752728177880858666, 'Alexander Liu', 11, ['Sports Editor', 'Digital Graphic Designer']));
 //NEW STAFFERSSS :DD
-//array.push(new Staffer(a, 'Brian Kuo', 11, ['Writer']));
+array.push(new Staffer(599644987176517642, 'Brian Kuo', 11, ['Writer']));
 array.push(new Staffer(996125407407509644, 'Nikhil Krishnaswamy', 10, ['Writer']));
 array.push(new Staffer(1105150719109120101, 'Ira Lele', 10, ['Writer']));
 //array.push(new Staffer(a, 'Amrita Brar', 10, ['Writer']));
