@@ -44,7 +44,7 @@ array.push(new Staffer(766073569553023026, 'Rishita Shah', 12, ['Video Editor', 
 array.push(new Staffer(765002153579511839, 'Andrew Qin', 12, ['Website Editor', 'News Editor']));
 array.push(new Staffer(479154661320949770, 'Angie Li', 12, ['Postscript Editor']));
 array.push(new Staffer(479894486495789056, 'Shaona Das', 11, ['Opinions Editor', 'Copy Editor']));
-array.push(new Staffer(746577308982444145, 'Evelyn Liao', 11, ['Features Editor', 'Photo Editor']));
+//array.push(new Staffer(746577308982444145, 'Evelyn Liao', 11, ['Features Editor', 'Photo Editor']));
 array.push(new Staffer(430217685725609994, 'Hailey Ryu', 11, ['Social Media Manager', 'Sports Editor']));
 array.push(new Staffer(826499607826661446, 'Riya Malik', 12, ['Copy Editor']));
 array.push(new Staffer(917954848626974771, 'Joyce Lee', 11, ['Video Editor', 'Copy Editor']));
@@ -172,7 +172,7 @@ client.on('interactionCreate', interaction => {
     //let channelName = array.filter(x=>x.uid == interaction.user.id)[0].positions[0];
     newChannel = interaction.guild.channels.create({
         name: array.filter(x=>x.uid == interaction.user.id)[0].positions[0],
-        parent: '1087200980027854958', //interaction.guild.channel,
+        parent: '1150567286487404615', //interaction.guild.channel,
         type: ChannelType.GuildText,
 	permissionOverwrites: [
 		{
