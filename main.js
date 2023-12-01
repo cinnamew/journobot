@@ -43,31 +43,35 @@ if(channel == 'all') channel = 1071517805662453862;
     else if(channel == 'copy') channel = 1071523012144275546;
     //i could't get this to work, so we're gonna have to hardcode it in lmao
 */
-let datesArr = [new Deadline(new Date(2023, 11, 1, 10, 0, 0), '1071517805662453862', 'some assignment', 'AM')];
+let datesArr = [];
+//new Deadline(new Date(2023, 11, 1, 10, 0, 0), '1071517805662453862', 'some assignment', 'AM')
 
 function checkTime() {
-    const deadline = datesArr[0];
-    const dateNow = new Date();
-    console.log('deadline: ' + deadline.date + ", date: " + dateNow);
-    let mins = deadline.date.getMinutes();
-    console.log(mins);
-    if(mins == 0) {
-        mins = '00';
-    }
-
-    if(deadline.date.getMonth() == dateNow.getMonth()) {
-        console.log('it\'s the right month!');
-        if(deadline.date.getDate() == dateNow.getDate() + 1) {  //doesn't work for 1st day of the month
-
-        }else if(deadline.date.getDate() == dateNow.getDate()) {
-            console.log('It\'s the right day!');
-            if(deadline.date.getHours() == dateNow.getHours() + 1) {    //need to change to 3
-                client.channels.cache.get(deadline.channel).send("Hi <@&1072019163368919093>, " + deadline.assignment + ' is due at ' + deadline.date.getHours() + ":" + mins + " " + deadline.ampm + " today!");
-                // it's prob gonna keep sending over and over again within the hour; tackle by removing it? need to add multiple
-                // objects in array for one assignment? more manual work but less on the coding end
+    datesArr.forEach((deadline) => {
+        const deadline = datesArr[0];
+        const dateNow = new Date();
+        console.log('deadline: ' + deadline.date + ", date: " + dateNow);
+        let mins = deadline.date.getMinutes();
+        console.log(mins);
+        if(mins == 0) {
+            mins = '00';
+        }
+    
+        if(deadline.date.getMonth() == dateNow.getMonth()) {
+            console.log('it\'s the right month!');
+            if(deadline.date.getDate() == dateNow.getDate() + 1) {  //doesn't work for 1st day of the month
+    
+            }else if(deadline.date.getDate() == dateNow.getDate()) {
+                console.log('It\'s the right day!');
+                if(deadline.date.getHours() == dateNow.getHours() + 1) {    //need to change to 3
+                    client.channels.cache.get(deadline.channel).send("Hi <@&1072019163368919093>, " + deadline.assignment + ' is due at ' + deadline.date.getHours() + ":" + mins + " " + deadline.ampm + " today!");
+                    // it's prob gonna keep sending over and over again within the hour; tackle by removing it? need to add multiple
+                    // objects in array for one assignment? more manual work but less on the coding end
+                }
             }
         }
-    }
+    });
+    
 }
 
 
