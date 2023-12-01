@@ -25,6 +25,52 @@ client.commands = new Collection();
 //}
 
 
+//TIME (DEADLINES) STUFF
+const intervalID = setInterval(checkTime, 1000);
+class Deadline {
+    constructor(date, channel, assignment, ampm) {
+        this.date = date;
+        this.channel = channel;
+        this.assignment = assignment;
+        this.ampm = ampm;
+    }
+}
+//date: year, month (jan = 0!!!), day, hours, minutes, seconds
+/* channels
+if(channel == 'all') channel = 1071517805662453862;
+    else if(channel == 'page') channel = 1071520095689511053;
+    else if(channel == 'online') channel = 1071521560348852405;
+    else if(channel == 'copy') channel = 1071523012144275546;
+    //i could't get this to work, so we're gonna have to hardcode it in lmao
+*/
+let datesArr = [new Deadline(new Date(2023, 11, 1, 10, 0, 0), '1071517805662453862', 'some assignment', 'AM')];
+
+function checkTime() {
+    const deadline = datesArr[0];
+    const dateNow = new Date();
+    console.log('deadline: ' + deadline.date + ", date: " + dateNow);
+    let mins = deadline.date.getMinutes();
+    console.log(mins);
+    if(mins == 0) {
+        mins = '00';
+    }
+
+    if(deadline.date.getMonth() == dateNow.getMonth()) {
+        console.log('it\'s the right month!');
+        if(deadline.date.getDate() == dateNow.getDate() + 1) {  //doesn't work for 1st day of the month
+
+        }else if(deadline.date.getDate() == dateNow.getDate()) {
+            console.log('It\'s the right day!');
+            if(deadline.date.getHours() == dateNow.getHours() + 1) {    //need to change to 3
+                client.channels.cache.get(deadline.channel).send("Hi <@&1072019163368919093>, " + deadline.assignment + ' is due at ' + deadline.date.getHours() + ":" + mins + " " + deadline.ampm + " today!");
+                // it's prob gonna keep sending over and over again within the hour; tackle by removing it? need to add multiple
+                // objects in array for one assignment? more manual work but less on the coding end
+            }
+        }
+    }
+}
+
+
 //init staffers
 
 class Staffer {
@@ -58,18 +104,17 @@ array.push(new Staffer(752728177880858666, 'Alexander Liu', 11, ['Sports Editor'
 array.push(new Staffer(599644987176517642, 'Brian Kuo', 11, ['Writer']));
 array.push(new Staffer(996125407407509644, 'Nikhil Krishnaswamy', 10, ['Writer']));
 array.push(new Staffer(1105150719109120101, 'Ira Lele', 10, ['Writer']));
-//array.push(new Staffer(a, 'Amrita Brar', 10, ['Writer']));
-//array.push(new Staffer(a, 'Nitya Dhulipala', 10, ['Writer']));
-//array.push(new Staffer(a, 'Zain Haseeb', 10, ['Writer']));
-//array.push(new Staffer(a, 'Yeechen Pang', 10, ['Writer']));
+array.push(new Staffer(1125455891429335150, 'Amrita Brar', 10, ['Writer']));
+array.push(new Staffer(910766430826397717, 'Nitya Dhulipala', 10, ['Writer']));
+array.push(new Staffer(767264383087935528, 'Zain Haseeb', 10, ['Writer']));
+array.push(new Staffer(807715880859467786, 'Yeechen Pang', 10, ['Writer']));
 array.push(new Staffer(823446697702850560, 'Katie Mak', 10, ['Writer']));
-array.push(new Staffer(542958035920748545, 'Sarah Lappalanien-Zhao', 11, ['Writer']));
-//array.push(new Staffer(a, 'Noah Kang', 11, ['Writer']));
-//array.push(new Staffer(a, 'Victoria Hunt', 10, ['Writer']));
-//array.push(new Staffer(a, 'Scarlett Guy', 10, ['Writer']));
-//array.push(new Staffer(a, 'Miya Widman', 10, ['Writer']));
-//array.push(new Staffer(a, 'Jeongwoo Choe', 11, ['Writer']));
-//array.push(new Staffer(a, 'Jade Wong', 10, ['Writer']));
+//array.push(new Staffer(542958035920748545, 'Sarah Lappalanien-Zhao', 11, ['Writer']));
+array.push(new Staffer(762468412747939853, 'Noah Kang', 11, ['Writer']));
+array.push(new Staffer(962527575287136287, 'Victoria Hunt', 10, ['Writer']));
+array.push(new Staffer(461714323665059860, 'Scarlett Guy', 10, ['Writer']));
+array.push(new Staffer(642957555387203598, 'Miya Widman', 10, ['Writer']));
+array.push(new Staffer(742229387973230664, 'Jeongwoo Choe', 11, ['Writer']));
 
 
 
@@ -90,10 +135,6 @@ array.push(new Staffer(542958035920748545, 'Sarah Lappalanien-Zhao', 11, ['Write
 //array.push(new Staffer(452313135148302347, 'Natalie Chen', 12, ['Writer', 'Opinions Editor (OLD)']));
 //array.push(new Staffer(424437176995151872, 'Aashin Singhal', 12, ['Writer','Opinions Assistant (OLD)']));
 
-// HAVE NOT JOINED DISCORD YET
-/*array.push(new Staffer(a, 'Rajasi Laddha', 12, ['Copy Editor']));
-array.push(new Staffer(a, 'Meghana Vinjamury', 12, ['Copy Editor']));
-*/
 
 
 
@@ -189,7 +230,6 @@ client.on('interactionCreate', interaction => {
     //newChannel.cache.get(newChannel.id).send('hey hey <@' + interaction.user.id + '>, here\'s your channel!');
     interaction.reply({content: 'Your channel has been created!', ephemeral: true});
 });
-
 
 
 

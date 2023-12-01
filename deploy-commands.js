@@ -19,7 +19,8 @@ const commands = [
 	new SlashCommandBuilder().setName('currentinfo').setDescription('Replies with info on the current issue + some important links!'),
     new SlashCommandBuilder().setName('button').setDescription('DO NOT USE THIS COMMAND (unless eic or bot editor)'),
 	new SlashCommandBuilder().setName('user').setDescription('Replies with user info!'),
-	new SlashCommandBuilder().setName('transcript').setDescription('do not use this command either (unless u r jolie)')
+	new SlashCommandBuilder().setName('transcript').setDescription('EDITORS ONLY: save your channel\'s transcript')
+	//new SlashCommandBuilder().setName('schedule').setDescription('no using this unless eic')
 ]
 	.map(command => command.toJSON());
 
