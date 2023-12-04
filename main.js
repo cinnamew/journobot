@@ -28,11 +28,13 @@ client.commands = new Collection();
 //TIME (DEADLINES) STUFF
 const intervalID = setInterval(checkTime, 1000);
 class Deadline {
-    constructor(date, channel, assignment, ampm) {
+    constructor(date, channel, assignment) {
         this.date = date;
         this.channel = channel;
         this.assignment = assignment;
-        this.ampm = ampm;
+        this.threehrs = false;
+        this.today = false;
+        this.tmrw = false;
     }
 }
 //date: year, month (jan = 0!!!), day, hours, minutes, seconds
@@ -41,38 +43,10 @@ if(channel == 'all') channel = 1071517805662453862;
     else if(channel == 'page') channel = 1071520095689511053;
     else if(channel == 'online') channel = 1071521560348852405;
     else if(channel == 'copy') channel = 1071523012144275546;
-    //i could't get this to work, so we're gonna have to hardcode it in lmao
 */
-let datesArr = [];
-//new Deadline(new Date(2023, 11, 1, 10, 0, 0), '1071517805662453862', 'some assignment', 'AM')
+let datesArr = [new Deadline(new Date(2023, 11, 1, 15, 0, 0), '1071517805662453862', 'some assignment')];
+datesArr.push(new Deadline(new Date(2023, 11, 2, 23, 59, 0), '1071517805662453862', 'another assignment'));
 
-function checkTime() {
-    datesArr.forEach((deadline) => {
-        const deadline = datesArr[0];
-        const dateNow = new Date();
-        console.log('deadline: ' + deadline.date + ", date: " + dateNow);
-        let mins = deadline.date.getMinutes();
-        console.log(mins);
-        if(mins == 0) {
-            mins = '00';
-        }
-    
-        if(deadline.date.getMonth() == dateNow.getMonth()) {
-            console.log('it\'s the right month!');
-            if(deadline.date.getDate() == dateNow.getDate() + 1) {  //doesn't work for 1st day of the month
-    
-            }else if(deadline.date.getDate() == dateNow.getDate()) {
-                console.log('It\'s the right day!');
-                if(deadline.date.getHours() == dateNow.getHours() + 1) {    //need to change to 3
-                    client.channels.cache.get(deadline.channel).send("Hi <@&1072019163368919093>, " + deadline.assignment + ' is due at ' + deadline.date.getHours() + ":" + mins + " " + deadline.ampm + " today!");
-                    // it's prob gonna keep sending over and over again within the hour; tackle by removing it? need to add multiple
-                    // objects in array for one assignment? more manual work but less on the coding end
-                }
-            }
-        }
-    });
-    
-}
 
 
 //init staffers
@@ -206,6 +180,8 @@ client.on('interactionCreate', async interaction => {
         interaction.channel.send('Transcript saved!');
     }else if(commandName === 'currentinfo') {
         await interaction.reply(`Current issue #: ${issuenum}\nImportant links doc: ${importantlink}\nFolder link: ${folderlink}\nNotion link: ${notionlink}`);
+    }else if(commandName === 'schedule') {
+
     }
     else await interaction.reply('weird! you found a bug! pls ping jolie :\')');
 });
@@ -235,6 +211,44 @@ client.on('interactionCreate', interaction => {
     interaction.reply({content: 'Your channel has been created!', ephemeral: true});
 });
 
+
+
+async function checkTime() {
+
+    for(let i = 0; i < datesArr.length; i++) {
+        const deadline = datesArr[i];
+        const dateNow = new Date();
+        //console.log('deadline: ' + deadline.date + ", date: " + dateNow);
+        let mins = deadline.date.getMinutes();
+        if(mins == 0) {
+            mins = '00';
+        }
+
+        if(deadline.date.getMonth() == dateNow.getMonth()) {
+            //console.log('it\'s the right month!');
+            if(deadline.date.getDate() == dateNow.getDate() + 1) {  //doesn't work for 1st day of the month
+                //console.log('due tmrw!');
+                if(!deadline.date.tmrw) {
+                    console.log('tmrw sent');
+                    await client.channels.cache.get(deadline.channel).send("Hi <@&1072019067965276160>, " + deadline.assignment + " is due at " + deadline.date.getHours() + ":" + mins + " tomorrow!");
+                    deadline.date.tmrw = true;
+                }
+            }else if(deadline.date.getDate() == dateNow.getDate()) {
+                //console.log('It\'s the right day!');
+                if(!deadline.date.today) {
+                    console.log("today should be sent");
+                    await client.channels.cache.get(deadline.channel).send("Hi <@&1072019112303272009>, " + deadline.assignment + " is due at " + deadline.date.getHours() + ":" + mins + " today!");
+                    deadline.date.today = true;
+                }else if(deadline.date.getHours() == dateNow.getHours() + 3 && !deadline.date.threehrs) {
+                    console.log('awaawa');
+                    await client.channels.cache.get(deadline.channel).send("Hi <@&1072019163368919093>, " + deadline.assignment + " is due at " + deadline.date.getHours() + ":" + mins + " today!");
+                    deadline.date.threehrs = true;
+                }
+            }
+        }
+    }
+
+}
 
 
 client.login(token);
