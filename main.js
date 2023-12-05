@@ -44,8 +44,8 @@ if(channel == 'all') channel = 1071517805662453862;
     else if(channel == 'online') channel = 1071521560348852405;
     else if(channel == 'copy') channel = 1071523012144275546;
 */
-let datesArr = [new Deadline(new Date(2023, 11, 1, 15, 0, 0), '1071517805662453862', 'some assignment')];
-datesArr.push(new Deadline(new Date(2023, 11, 2, 23, 59, 0), '1071517805662453862', 'another assignment'));
+let datesArr = [new Deadline(new Date(2023, 11, 5, 22, 0, 0), '1071520095689511053', 'Adobe Link 2 & Draft 2 Content Edits')];
+datesArr.push(new Deadline(new Date(2023, 11, 6, 23, 59, 0), '1071517805662453862', 'Draft 2 Copy Edits'));
 
 
 
