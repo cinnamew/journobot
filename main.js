@@ -26,7 +26,7 @@ client.commands = new Collection();
 
 
 //TIME (DEADLINES) STUFF
-const intervalID = setInterval(checkTime, 1000);
+//const intervalID = setInterval(checkTime, 1000);
 class Deadline {
     constructor(date, channel, assignment) {
         this.date = date;
@@ -46,6 +46,7 @@ if(channel == 'all') channel = 1071517805662453862;
 */
 let datesArr = [new Deadline(new Date(2023, 11, 5, 22, 0, 0), '1071520095689511053', 'Adobe Link 2 & Draft 2 Content Edits')];
 datesArr.push(new Deadline(new Date(2023, 11, 6, 23, 59, 0), '1071517805662453862', 'Draft 2 Copy Edits'));
+datesArr.push(new Deadline(new Date(2024, 0, 6, 23, 59, 0), '1071517805662453862', 'Draft 2 Copy Edits'));
 
 
 
@@ -119,6 +120,7 @@ array.push(new Staffer(742229387973230664, 'Jeongwoo Choe', 11, ['Writer']));
 client.once('ready', () => {
     console.log('i\'m on!');
     client.user.setActivity('over the prospector!', { type: ActivityType.Watching });
+    const intervalID = setInterval(checkTime, 1000);
 });
 
 client.on('interactionCreate', async interaction => {
@@ -181,7 +183,17 @@ client.on('interactionCreate', async interaction => {
     }else if(commandName === 'currentinfo') {
         await interaction.reply(`Current issue #: ${issuenum}\nImportant links doc: ${importantlink}\nFolder link: ${folderlink}\nNotion link: ${notionlink}`);
     }else if(commandName === 'schedule') {
-
+        datesArr.sort(function(a,b){
+            // Turn your strings into dates, and then subtract them
+            // to get a value that is either negative, positive, or zero.
+            return new Date(b.date) - new Date(a.date);
+        });
+        let reply = 'Upcoming deadlines:\n';
+        for(let i = 0; i < datesArr.length; i++) {
+            let temp = datesArr[i];
+            reply += '**' + temp.assignment + '** due on ' + temp.date + '\n';
+        }
+        await interaction.reply(reply);
     }
     else await interaction.reply('weird! you found a bug! pls ping jolie :\')');
 });
@@ -246,6 +258,12 @@ async function checkTime() {
                 }
             }
         }
+
+        if(deadline.date < new Date()) {
+            array.splice(i, 1);
+            i--;
+        }
+
     }
 
 }

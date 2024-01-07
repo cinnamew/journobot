@@ -20,7 +20,34 @@ const commands = [
     new SlashCommandBuilder().setName('button').setDescription('DO NOT USE THIS COMMAND (unless eic or bot editor)'),
 	new SlashCommandBuilder().setName('user').setDescription('Replies with user info!'),
 	new SlashCommandBuilder().setName('transcript').setDescription('EDITORS ONLY: save your channel\'s transcript'),
-	new SlashCommandBuilder().setName('schedule').setDescription('no using this unless eic')
+	new SlashCommandBuilder().setName('schedule').setDescription('View upcoming deadlines. Hopefully.'),
+	new SlashCommandBuilder().setName('newassignment').setDescription('wip')
+		//.addIntegerOption(option =>
+		//	option.setName('month')
+		//		.setDescription('Assignment month')
+		//		.setRequired(true)
+		//		.addChoices(
+		//			{ name: 1, value: 0 },
+		//			{ name: 2, value: 1 }
+		//			//{ name: 'March', value: 2 },
+		//			//{ name: 'April', value: 3 },
+		//			//{ name: 'May', value: 4 },
+		//			//{ name: 'June', value: 5 },
+		//			//{ name: 'July', value: 6 },
+		//			//{ name: 'August', value: 7 },
+		//			//{ name: 'September', value: 8 },
+		//			//{ name: 'October', value: 9 },
+		//			//{ name: 'November', value: 10 },
+		//			//{ name: 'December', value: 11 },
+		//		)
+		//)
+		.addIntegerOption(option =>
+			option.setName('day')
+				.setDescription('Assignment day')
+				.setMaxValue(31)
+				.setMinValue(1)
+				.setRequired(true)
+		)
 ]
 	.map(command => command.toJSON());
 
