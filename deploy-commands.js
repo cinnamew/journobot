@@ -22,31 +22,65 @@ const commands = [
 	new SlashCommandBuilder().setName('transcript').setDescription('EDITORS ONLY: save your channel\'s transcript'),
 	new SlashCommandBuilder().setName('schedule').setDescription('View upcoming deadlines. Hopefully.'),
 	new SlashCommandBuilder().setName('newassignment').setDescription('wip')
-		//.addIntegerOption(option =>
-		//	option.setName('month')
-		//		.setDescription('Assignment month')
-		//		.setRequired(true)
-		//		.addChoices(
-		//			{ name: 1, value: 0 },
-		//			{ name: 2, value: 1 }
-		//			//{ name: 'March', value: 2 },
-		//			//{ name: 'April', value: 3 },
-		//			//{ name: 'May', value: 4 },
-		//			//{ name: 'June', value: 5 },
-		//			//{ name: 'July', value: 6 },
-		//			//{ name: 'August', value: 7 },
-		//			//{ name: 'September', value: 8 },
-		//			//{ name: 'October', value: 9 },
-		//			//{ name: 'November', value: 10 },
-		//			//{ name: 'December', value: 11 },
-		//		)
-		//)
+		.addStringOption(option =>
+			option.setName('assignment')
+				.setDescription('The assignment')
+				.setRequired(true)
+		)
+		.addStringOption(option =>
+			option.setName('channel')
+				.setDescription('Who the assignment is for; it will be sent to their channel')
+				.setRequired(true)
+				.addChoices(
+					{ name: 'All', value: '1071517805662453862' },
+					{ name: 'Page Editor', value: '1071520095689511053' },
+					{ name: 'Online Editor', value: '1071521560348852405' },
+					{ name: 'Copy Editor', value: '1071523012144275546' },
+				)
+		)
+		.addIntegerOption(option =>
+			option.setName('month')
+				.setDescription('Assignment month')
+				.setRequired(true)
+				.addChoices(
+					{ name: 'January', value: 0 },
+					{ name: 'February', value: 1 },
+					{ name: 'March', value: 2 },
+					{ name: 'April', value: 3 },
+					{ name: 'May', value: 4 },
+					{ name: 'June', value: 5 },
+					{ name: 'July', value: 6 },
+					{ name: 'August', value: 7 },
+					{ name: 'September', value: 8 },
+					{ name: 'October', value: 9 },
+					{ name: 'November', value: 10 },
+					{ name: 'December', value: 11 },
+				)
+		)
 		.addIntegerOption(option =>
 			option.setName('day')
 				.setDescription('Assignment day')
 				.setMaxValue(31)
 				.setMinValue(1)
 				.setRequired(true)
+		)
+		.addIntegerOption(option => 
+			option.setName('hour')
+				.setDescription('Hour due, in MILITARY TIME')
+				.setRequired(true)
+				.setMinValue(0)
+				.setMaxValue(23)
+		)
+		.addIntegerOption(option =>
+			option.setName('minutes')
+				.setDescription('00, 59, etc')
+				.setRequired(true)
+
+			)
+		.addIntegerOption(option =>
+			option.setName('year')
+				.setDescription('Year. Will default to 2024 if not set.')
+				.setMinValue(2024)
 		)
 ]
 	.map(command => command.toJSON());

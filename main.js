@@ -46,7 +46,7 @@ if(channel == 'all') channel = 1071517805662453862;
 */
 let datesArr = [new Deadline(new Date(2023, 11, 5, 22, 0, 0), '1071520095689511053', 'Adobe Link 2 & Draft 2 Content Edits')];
 datesArr.push(new Deadline(new Date(2023, 11, 6, 23, 59, 0), '1071517805662453862', 'Draft 2 Copy Edits'));
-datesArr.push(new Deadline(new Date(2024, 0, 6, 23, 59, 0), '1071517805662453862', 'Draft 2 Copy Edits'));
+datesArr.push(new Deadline(new Date(2024, 0, 8, 0, 0, 0), '1071517805662453862', 'TEST ASSIGNMENT'));
 
 
 
@@ -115,12 +115,13 @@ array.push(new Staffer(742229387973230664, 'Jeongwoo Choe', 11, ['Writer']));
 //array.push(new Staffer(424437176995151872, 'Aashin Singhal', 12, ['Writer','Opinions Assistant (OLD)']));
 
 
+//const intervalID = setInterval(checkTime, 1000);
 
 
 client.once('ready', () => {
     console.log('i\'m on!');
     client.user.setActivity('over the prospector!', { type: ActivityType.Watching });
-    const intervalID = setInterval(checkTime, 1000);
+    checkTime();
 });
 
 client.on('interactionCreate', async interaction => {
@@ -138,6 +139,7 @@ client.on('interactionCreate', async interaction => {
 	//}
     
     const {commandName} = interaction;
+    //console.log(commandName);
 
     if (commandName === 'hi') {
         await interaction.reply('hey hey!');
@@ -184,9 +186,7 @@ client.on('interactionCreate', async interaction => {
         await interaction.reply(`Current issue #: ${issuenum}\nImportant links doc: ${importantlink}\nFolder link: ${folderlink}\nNotion link: ${notionlink}`);
     }else if(commandName === 'schedule') {
         datesArr.sort(function(a,b){
-            // Turn your strings into dates, and then subtract them
-            // to get a value that is either negative, positive, or zero.
-            return new Date(b.date) - new Date(a.date);
+            return new Date(a.date) - new Date(b.date);
         });
         let reply = 'Upcoming deadlines:\n';
         for(let i = 0; i < datesArr.length; i++) {
@@ -194,6 +194,15 @@ client.on('interactionCreate', async interaction => {
             reply += '**' + temp.assignment + '** due on ' + temp.date + '\n';
         }
         await interaction.reply(reply);
+    }else if(commandName === 'newassignment') {
+        //datesArr.push(new Deadline(new Date(2023, 11, 6, 23, 59, 0), '1071517805662453862', 'Draft 2 Copy Edits'));
+        const ass = interaction.options.getString('assignment');
+        const yr = interaction.options.getInteger('year') ?? 2024;
+        const chn = interaction.options.getString('channel');
+        const dt = new Date(yr, interaction.options.getInteger('month'), interaction.options.getInteger('day'), interaction.options.getInteger('hour'), interaction.options.getInteger('minutes'), 0);
+        var temp = dt.getTime()/1000;
+        datesArr.push(new Deadline(dt, chn, ass));
+        await interaction.reply(`${ass} added for <#${chn}> on <t:${temp}>!\nTo view all assignments, use the \`/schedule\` command.`);
     }
     else await interaction.reply('weird! you found a bug! pls ping jolie :\')');
 });
@@ -226,6 +235,7 @@ client.on('interactionCreate', interaction => {
 
 
 async function checkTime() {
+    //console.log('in checkTime');
 
     for(let i = 0; i < datesArr.length; i++) {
         const deadline = datesArr[i];
@@ -242,30 +252,33 @@ async function checkTime() {
                 //console.log('due tmrw!');
                 if(!deadline.date.tmrw) {
                     console.log('tmrw sent');
-                    await client.channels.cache.get(deadline.channel).send("Hi <@&1072019067965276160>, " + deadline.assignment + " is due at " + deadline.date.getHours() + ":" + mins + " tomorrow!");
+                    await client.channels.cache.get(deadline.channel).send("Hi <@&1072019067965276160>, **" + deadline.assignment + "** is due at " + deadline.date.getHours() + ":" + mins + " tomorrow!");
                     deadline.date.tmrw = true;
                 }
             }else if(deadline.date.getDate() == dateNow.getDate()) {
                 //console.log('It\'s the right day!');
                 if(!deadline.date.today) {
                     console.log("today should be sent");
-                    await client.channels.cache.get(deadline.channel).send("Hi <@&1072019112303272009>, " + deadline.assignment + " is due at " + deadline.date.getHours() + ":" + mins + " today!");
+                    await client.channels.cache.get(deadline.channel).send("Hi <@&1072019112303272009>, **" + deadline.assignment + "** is due at " + deadline.date.getHours() + ":" + mins + " today!");
                     deadline.date.today = true;
                 }else if(deadline.date.getHours() == dateNow.getHours() + 3 && !deadline.date.threehrs) {
                     console.log('awaawa');
-                    await client.channels.cache.get(deadline.channel).send("Hi <@&1072019163368919093>, " + deadline.assignment + " is due at " + deadline.date.getHours() + ":" + mins + " today!");
+                    await client.channels.cache.get(deadline.channel).send("Hi <@&1072019163368919093>, **" + deadline.assignment + "** is due at " + deadline.date.getHours() + ":" + mins + " today!");
                     deadline.date.threehrs = true;
                 }
             }
         }
 
         if(deadline.date < new Date()) {
-            array.splice(i, 1);
+            datesArr.splice(i, 1);
             i--;
         }
 
     }
-
+    //setTimeout(checkTime, 2000);
+    //console.log('raaaa');
+    await new Promise(resolve => setTimeout(resolve, 5000));
+    checkTime();
 }
 
 
