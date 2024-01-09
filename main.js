@@ -24,6 +24,7 @@ client.commands = new Collection();
 //    client.commands.set(command.data.name, command);
 //}
 
+const hostedLocally = false;    //for timezone purposes lol
 
 //TIME (DEADLINES) STUFF
 //const intervalID = setInterval(checkTime, 1000);
@@ -199,7 +200,10 @@ client.on('interactionCreate', async interaction => {
         const ass = interaction.options.getString('assignment');
         const yr = interaction.options.getInteger('year') ?? 2024;
         const chn = interaction.options.getString('channel');
-        const dt = new Date(yr, interaction.options.getInteger('month'), interaction.options.getInteger('day'), interaction.options.getInteger('hour'), interaction.options.getInteger('minutes'), 0);
+        var hr = interaction.options.getInteger('hour') + 8;
+        if(hostedLocally) hr = interaction.options.getInteger('hour');
+        const dt = new Date(yr, interaction.options.getInteger('month'), interaction.options.getInteger('day'), hr, interaction.options.getInteger('minutes'), 0);
+        
         var temp = dt.getTime()/1000;
         datesArr.push(new Deadline(dt, chn, ass));
         await interaction.reply(`${ass} added for <#${chn}> on <t:${temp}>!\nTo view all assignments, use the \`/schedule\` command.`);
@@ -246,24 +250,26 @@ async function checkTime() {
             mins = '00';
         }
 
+        var temp = deadline.date.getTime()/1000;
+
         if(deadline.date.getMonth() == dateNow.getMonth()) {
             //console.log('it\'s the right month!');
             if(deadline.date.getDate() == dateNow.getDate() + 1) {  //doesn't work for 1st day of the month
                 //console.log('due tmrw!');
                 if(!deadline.date.tmrw) {
                     console.log('tmrw sent');
-                    await client.channels.cache.get(deadline.channel).send("Hi <@&1072019067965276160>, **" + deadline.assignment + "** is due at " + deadline.date.getHours() + ":" + mins + " tomorrow!");
+                    await client.channels.cache.get(deadline.channel).send("Hi <@&1072019067965276160>, **" + deadline.assignment + "** is due tomorrow, <t:" + temp + ">!");
                     deadline.date.tmrw = true;
                 }
             }else if(deadline.date.getDate() == dateNow.getDate()) {
                 //console.log('It\'s the right day!');
                 if(!deadline.date.today) {
                     console.log("today should be sent");
-                    await client.channels.cache.get(deadline.channel).send("Hi <@&1072019112303272009>, **" + deadline.assignment + "** is due at " + deadline.date.getHours() + ":" + mins + " today!");
+                    await client.channels.cache.get(deadline.channel).send("Hi <@&1072019112303272009>, **" + deadline.assignment + "** is due today, <t:" + temp + ">!");
                     deadline.date.today = true;
                 }else if(deadline.date.getHours() == dateNow.getHours() + 3 && !deadline.date.threehrs) {
-                    console.log('awaawa');
-                    await client.channels.cache.get(deadline.channel).send("Hi <@&1072019163368919093>, **" + deadline.assignment + "** is due at " + deadline.date.getHours() + ":" + mins + " today!");
+                    console.log('3 hrs sent');
+                    await client.channels.cache.get(deadline.channel).send("Hi <@&1072019163368919093>, **" + deadline.assignment + "** is due today, <t:" + temp + "> today!");
                     deadline.date.threehrs = true;
                 }
             }
