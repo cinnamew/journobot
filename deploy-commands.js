@@ -20,8 +20,12 @@ const commands = [
     new SlashCommandBuilder().setName('button').setDescription('DO NOT USE THIS COMMAND (unless eic or bot editor)'),
 	new SlashCommandBuilder().setName('user').setDescription('Replies with user info!'),
 	new SlashCommandBuilder().setName('transcript').setDescription('EDITORS ONLY: save your channel\'s transcript'),
-	new SlashCommandBuilder().setName('schedule').setDescription('View upcoming deadlines. Hopefully.'),
-	new SlashCommandBuilder().setName('newassignment').setDescription('wip')
+	new SlashCommandBuilder().setName('schedule').setDescription('View upcoming deadlines'),
+	new SlashCommandBuilder().setName('remove').setDescription('Remove an assignment').addIntegerOption(option =>
+		option.setName('id')
+			.setDescription('Assignment ID')
+			.setRequired(true)),
+	new SlashCommandBuilder().setName('newassignment').setDescription('Add an assignment')
 		.addStringOption(option =>
 			option.setName('assignment')
 				.setDescription('The assignment')

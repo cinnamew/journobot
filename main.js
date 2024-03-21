@@ -190,11 +190,21 @@ client.on('interactionCreate', async interaction => {
             return new Date(a.date) - new Date(b.date);
         });
         let reply = 'Upcoming deadlines:\n';
+        if(datesArr.length == 0) reply += 'N/A';
         for(let i = 0; i < datesArr.length; i++) {
             let temp = datesArr[i];
-            reply += '**' + temp.assignment + '** due on ' + temp.date + '\n';
+            reply += '[' + i + ']: ' + '**' + temp.assignment + '** due on <t:' + temp.date.getTime()/1000 + '>\n';
         }
         await interaction.reply(reply);
+    }else if(commandName === 'remove') {
+        const id = interaction.options.getInteger('id');
+        if(id >= datesArr.length) {
+            await interaction.reply(`There aren't enough assignments to remove that!`);
+            return;
+        }
+        const temp = datesArr[id];
+        datesArr.splice(id, 1);
+        await interaction.reply(`Deleted ` + '**' + temp.assignment + '** (originally due on <t:' + temp.date.getTime()/1000 + '>)');
     }else if(commandName === 'newassignment') {
         //datesArr.push(new Deadline(new Date(2023, 11, 6, 23, 59, 0), '1071517805662453862', 'Draft 2 Copy Edits'));
         const ass = interaction.options.getString('assignment');
@@ -244,6 +254,7 @@ async function checkTime() {
     for(let i = 0; i < datesArr.length; i++) {
         const deadline = datesArr[i];
         const dateNow = new Date();
+        
         //console.log('deadline: ' + deadline.date + ", date: " + dateNow);
         let mins = deadline.date.getMinutes();
         if(mins == 0) {
