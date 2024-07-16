@@ -227,7 +227,7 @@ client.on('interactionCreate', interaction => {
 	//console.log(interaction);
     //let channelName = array.filter(x=>x.uid == interaction.user.id)[0].positions[0];
     newChannel = interaction.guild.channels.create({
-        name: array.filter(x=>x.uid == interaction.user.id)[0].positions[0],
+        name: interaction.user.username, //array.filter(x=>x.uid == interaction.user.id)[0].positions[0],
         parent: '1150567286487404615', //interaction.guild.channel,
         type: ChannelType.GuildText,
 	permissionOverwrites: [
